@@ -1,0 +1,50 @@
+<script>
+
+var ilosc = 5; //ilosc dat do wylosowania 
+
+//tablica do zmiany nr dnia na pelna polska nazwe 
+var dzien = new Array(7)
+dzien[0] = "Niedziela"
+dzien[1] = "Poniedziałek"
+dzien[2] = "Wtorek"
+dzien[3] = "Środa"
+dzien[4] = "Czwartek"
+dzien[5] = "Piątek"
+dzien[6] = "Sobota"
+
+//tablica do zmiany nr miesiaca na pelna polska nazwe
+var miesiac = new Array(12) 
+miesiac[0] = "styczeń " 
+miesiac[1] = "luty " 
+miesiac[2] = "marzec " 
+miesiac[3] = "kwiecień " 
+miesiac[4] = "maj " 
+miesiac[5] = "czerwiec " 
+miesiac[6] = "lipiec " 
+miesiac[7] = "sierpień " 
+miesiac[8] = "wrzesień " 
+miesiac[9] = "październik " 
+miesiac[10] = "listopad" 
+miesiac[11] = "grudzień"
+
+var tablica = new Array(); //tablica z ktorej pozniej beda losowane daty 
+
+function tablicaf(){ //poczatek funkcji uzupelniajacej i formatujacej tablice
+var poczatek = new Date(2019, 0, 1); //data poczatkowa w formacie (rok, miesiac, dzien)
+var koniec = new Date(2019, 2, 30); // data koncowa
+
+while (poczatek <= koniec){//petla ktora bedzie dodawac sformatowane daty od daty poczatkowej do daty koncowej
+tablica.push(dzien[poczatek.getDay()]+", "+poczatek.getFullYear()+", "+miesiac[poczatek.getMonth()]+", "+poczatek.getDate());
+  poczatek.setDate(poczatek.getDate()+1);
+}
+  
+return tablica; //zakonczenie funkcji i zwrocenie finalnej formy tablicy
+}
+
+var datax = tablicaf();
+
+for(var x=1; x<=ilosc; x++ ){//petla losujaca daty z tablicy 
+  var losuj = datax[Math.floor(Math.random() * datax.length)]; 
+  document.write(losuj+"<br>");//wypisanie wylosowanej daty
+}
+</script>
